@@ -13,8 +13,6 @@ export const fakerBR = new Faker({
 for (let index = 0; index < 10; index++) {
     console.log(fakerBR.commerce.product());
     console.log(fakerBR.person.fullName());
-    
-    
 }
 
 const nome:string = "Angelo";
@@ -42,3 +40,22 @@ console.log(boneco2.nome); // Gladimir
 console.log(boneco2.energia); // 80
 console.log(boneco3.nome); // Bruna
 console.log(boneco3.energia); // 0
+
+function treinarAtaque(person: Personagem, numHoras: number){
+
+    person.energia -= randomizar(15,30) * numHoras;
+    const morreu: boolean = person.energia < 0;
+    if(morreu){
+        throw new Error(`${person.nome} subiu!`)
+    }
+    person.ataque = 10 + (person.ataque * 1.1) * numHoras;
+}
+
+function randomizar(base: number, limite: number){
+    return Math.round(base + Math.random()*limite-base)
+}
+
+console.log(boneco);
+treinarAtaque(boneco,2)
+console.log(boneco);
+
