@@ -8,54 +8,36 @@ const opt = +teclado("Digite uma opção");
 
 export const fakerBR = new Faker({
     locale: [pt_BR],
-  });
+});
 
-for (let index = 0; index < 10; index++) {
-    console.log(fakerBR.commerce.product());
-    console.log(fakerBR.person.fullName());
+const heroi: Personagem = new Personagem();
+heroi.nome = "Edécio";
+heroi.atributos.armadura = 10;
+heroi.classe = "Mago";
+heroi.atributos.defesa = 5;
+heroi.atributos.ataque = 60;
+heroi.status.energia = 80;
+heroi.raca = "Morto-vivo";
+
+function treinarAtaque(): void {
+    const horas = +teclado("Digite o número de horas para treinar ataque");
+    const mensagem = heroi.treinarAtaque(horas);
+    console.log(mensagem);
 }
 
-const nome:string = "Angelo";
-
-const boneco: Personagem = new Personagem();
-boneco.nome = "Edécio";
-boneco.armadura = 10;
-boneco.classe =  "Mago";
-boneco.defesa = 5;
-boneco.ataque = 60;
-boneco.energia = 80;
-boneco.raca = "Morto-vivo";
-
-
-
-const boneco2 = {...boneco};
-boneco2.nome = "Gladimir";
-
-const boneco3 = new Personagem();
-boneco3.nome = "Bruna";
-
-console.log(boneco.nome); // Edécio
-console.log(boneco.energia); //80
-console.log(boneco2.nome); // Gladimir
-console.log(boneco2.energia); // 80
-console.log(boneco3.nome); // Bruna
-console.log(boneco3.energia); // 0
-
-function treinarAtaque(person: Personagem, numHoras: number){
-
-    person.energia -= randomizar(15,30) * numHoras;
-    const morreu: boolean = person.energia < 0;
-    if(morreu){
-        throw new Error(`${person.nome} subiu!`)
-    }
-    person.ataque = 10 + (person.ataque * 1.1) * numHoras;
+function treinarDefesa(): void {
+    const horas = +teclado("Digite o número de horas para treinar defesa");
+    const mensagem = heroi.treinarDefesa(horas);
+    console.log(mensagem);
 }
 
-function randomizar(base: number, limite: number){
-    return Math.round(base + Math.random()*limite-base)
+function descansar(): void {
+    const horas = +teclado("Digite o número de horas para descansar");
+    const mensagem = heroi.descansar(horas);
+    console.log(mensagem);
 }
-
-console.log(boneco);
-treinarAtaque(boneco,2)
-console.log(boneco);
-
+function desafiar(): void {
+    const nivel = +teclado("Digite o nível do personagem desafiado");
+    const mensagem = heroi.desafiar(nivel);
+    console.log(mensagem);
+}
