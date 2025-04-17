@@ -1,0 +1,1 @@
+export const VALOR_INVALIDO = "Valor inválido para saque";
